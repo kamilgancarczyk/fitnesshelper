@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Tab2">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="Calculate your BMI"
+            android:textSize="35dp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title"
+            android:id="@+id/weightSetter"
+            android:layout_marginTop="16dp">
+
+            <TextView
+                android:id="@+id/weight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/title"
+                android:text="Enter your weight:"
+                android:textSize="18dp"
+                android:layout_marginLeft="20dp"/>
+
+            <EditText
+                android:id="@+id/weightInput"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/weight"
+                android:layout_marginLeft="20dp"
+                android:inputType="number"
+                android:focusable="auto"/>
+
+            <TextView
+                android:id="@+id/kg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/weightInput"
+                android:text="kg"
+                android:textSize="18dp"
+                android:layout_marginLeft="20dp"/>
+
+    </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/weightSetter"
+            android:id="@+id/heightSetter"
+            android:layout_marginTop="16dp">
+
+            <TextView
+                android:id="@+id/height"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/title"
+                android:text="Enter your height:"
+                android:textSize="18dp"
+                android:layout_marginLeft="20dp"/>
+
+            <EditText
+                android:id="@+id/heightInput"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/height"
+                android:layout_marginLeft="20dp"
+                android:hint=""
+                android:inputType="number"
+                android:focusable="auto"
+                android:textSize="18dp"/>
+
+            <TextView
+                android:id="@+id/cm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/heightInput"
+                android:text="cm"
+                android:textSize="18dp"
+                android:layout_marginLeft="20dp"/>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/calculateButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Calculate"
+            android:layout_marginTop="15dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/calculateButton"
+            android:id="@+id/score"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/scoreText"
+                android:text="Score"
+                android:gravity="center"
+                android:textSize="25dp"/>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Your BMI is:   "
+                    android:layout_weight="1"
+                    android:textAlignment="textEnd"
+                    android:textSize="18dp"
+                    android:paddingTop="5dp"
+                    android:id="@+id/bmi"
+                    android:gravity="center"
+                    tools:ignore="RtlCompat"/>
+
+                <TextView
+                    android:id="@+id/bmiValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="textStart"
+                    android:layout_weight="1.35"
+                    android:paddingLeft="5dp"
+                    android:text="20.01"
+                    android:textStyle="bold"
+                    android:paddingTop="5dp"
+                    android:gravity="center"
+                    android:textSize="18dp"
+                    android:layout_alignRight="@+id/bmi"
+                    tools:ignore="RtlCompat" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:id="@+id/scoreTitle"
+                android:layout_below="@+id/scoreText"
+                android:textSize="19dp"
+                android:gravity="center"/>
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/icons"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/help"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:src="@drawable/ic_help_outline_black"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="10dp"/>
+
+            <ImageButton
+                android:id="@+id/calculate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_insert_chart_black_24dp"
+                android:background="@null"
+                android:layout_weight="1"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="10dp"/>
+
+            <ImageButton
+                android:id="@+id/remember"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_whatshot_black"
+                android:background="@null"
+                android:layout_weight="1"
+                android:layout_marginBottom="10dp"
+                android:layout_gravity="bottom"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
