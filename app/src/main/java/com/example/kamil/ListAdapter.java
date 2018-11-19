@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -24,13 +25,43 @@ public class ListAdapter extends RecyclerView.Adapter {
         this.context = context;
     }
 
-    @NonNull
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull final ViewGroup viewGroup, int i) {
+    public RecyclerView.ViewHolder onCreateViewHolder(final ViewGroup viewGroup, int i) {
 
         View view = LayoutInflater.from(context).inflate(R.layout.list_item, viewGroup, false);
 
         final ListViewHolder viewHolder = new ListViewHolder(view);
+
+        myDialog = new Dialog(context);
+        myDialog.setContentView(R.layout.dialog_workout);
+
+
+
+        viewHolder.item_workout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TextView workoutName = myDialog.findViewById(R.id.workoutName);
+                TextView workoutPartOfBody = myDialog.findViewById(R.id.workoutBodyPart);
+                TextView workoutDesc = myDialog.findViewById(R.id.workoutDesc);
+                ImageView dialog_img = myDialog.findViewById(R.id.workoutImage);
+                Button dialog_button = myDialog.findViewById(R.id.closeButton);
+
+                workoutName.setText(OurData.title[viewHolder.getAdapterPosition()]);
+                workoutPartOfBody.setText(OurData.description[viewHolder.getAdapterPosition()]);
+                workoutDesc.setText(OurData.specification[viewHolder.getAdapterPosition()]);
+                dialog_img.setImageResource(OurData.imgPath[viewHolder.getAdapterPosition()]);
+
+                //Toast.makeText(context,"Nacisniety element nr: " + String.valueOf(viewHolder.getAdapterPosition()), Toast.LENGTH_SHORT).show();
+                myDialog.show();
+
+                dialog_button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        myDialog.cancel();
+                    }
+                });
+            }
+        });
 
         return viewHolder;
     }
@@ -45,7 +76,7 @@ public class ListAdapter extends RecyclerView.Adapter {
         return OurData.title.length;
     }
 
-    private class ListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public static class ListViewHolder extends RecyclerView.ViewHolder{
 
         public LinearLayout item_workout;
         private TextView mItemText, mItemDesc;
@@ -58,7 +89,7 @@ public class ListAdapter extends RecyclerView.Adapter {
             mItemText = itemView.findViewById(R.id.itemText);
             mItemImage = itemView.findViewById(R.id.itemImage);
             mItemDesc = itemView.findViewById(R.id.itemDesc);
-            itemView.setOnClickListener(this);
+            //itemView.setOnClickListener(this);
         }
 
         public void bindView(int position){
@@ -67,7 +98,7 @@ public class ListAdapter extends RecyclerView.Adapter {
             mItemImage.setImageResource(OurData.imgPath[position]);
         }
 
-        @Override
+        /*@Override
         public void onClick(View v) {
             myDialog = new Dialog(context);
             myDialog.setContentView(R.layout.dialog_workout);
@@ -99,7 +130,7 @@ public class ListAdapter extends RecyclerView.Adapter {
                     myDialog.show();
                 }
             });
-        }
+        }*/
 
     }
 
